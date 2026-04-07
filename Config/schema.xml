@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database defaultIdMethod="native" name="TheliaMain"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../core/vendor/propel/propel/resources/xsd/database.xsd" >
+
+    <table name="abandoned_account_reminder" namespace="AbandonedAccountReminder\Model" phpName="AbandonedAccount">
+        <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true" />
+        <column name="customer_id" required="true" type="INTEGER" />
+        <column name="customer_email" size="255" type="VARCHAR" />
+        <column name="locale" size="5" type="VARCHAR" />
+        <column name="status" size="1" type="INTEGER" defaultValue="0" />
+        <column name="last_update" type="TIMESTAMP"/>
+
+        <foreign-key foreignTable="customer" name="fk_abandoned_account_customer_id" onDelete="CASCADE" onUpdate="RESTRICT">
+            <reference foreign="id" local="customer_id" />
+        </foreign-key>
+    </table>
+
+    <external-schema filename="local/config/schema.xml" referenceOnly="true" />
+</database>

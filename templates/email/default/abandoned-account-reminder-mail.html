@@ -1,0 +1,11 @@
+{extends file="layout-reminder-mail.tpl"}
+
+{block name="content"}
+    <p>{intl l='Hello' d="abandonedaccountreminder"},</p>
+    <p>{intl l='Welcome! Your account has been successfully created.' d="abandonedaccountreminder"}</p>
+    <p>{intl l='We noticed that you haven\'t placed your first order yet. Is there anything we can help you with?' d="abandonedaccountreminder"}</p>
+{/block}
+
+{block name="footer"}
+    <p class="right">{intl l='Have a nice day,' d="abandonedaccountreminder"}</p>
+{/block}
