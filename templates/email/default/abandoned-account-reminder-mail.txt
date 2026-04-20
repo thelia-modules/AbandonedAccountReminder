@@ -1,6 +1,4 @@
-{intl l='Hello' d="abandonedaccountreminder"},
-
-{intl l='Welcome! Your account has been successfully created.' d="abandonedaccountreminder"}
+{intl l='Hello %firstname, Welcome!' firstname=$customer_firstname d="abandonedaccountreminder"}
 
 {intl l='We noticed that you haven\'t placed your first order yet. Is there anything we can help you with?' d="abandonedaccountreminder"}
 

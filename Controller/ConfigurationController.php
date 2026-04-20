@@ -40,6 +40,7 @@ class ConfigurationController extends AdminController
             $data = $this->validateForm($configurationForm)->getData();
 
             AbandonedAccountReminder::setConfigValue(AbandonedAccountReminder::CONFIG_NAME_REMINDER_TIME, $data[AbandonedAccountReminder::CONFIG_NAME_REMINDER_TIME] ?? '');
+            AbandonedAccountReminder::setConfigValue(AbandonedAccountReminder::CONFIG_NAME_URL_TRACKING_ARGUMENTS, $data[AbandonedAccountReminder::CONFIG_NAME_URL_TRACKING_ARGUMENTS] ?? '');
 
             return $this->generateSuccessRedirect($configurationForm);
         } catch (FormValidationException $ex) {

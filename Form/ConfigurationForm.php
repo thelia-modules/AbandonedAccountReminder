@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Thelia\Form\BaseForm;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ConfigurationForm extends BaseForm
 {
@@ -36,6 +37,21 @@ class ConfigurationForm extends BaseForm
                     'label_attr'  => [
                         'help' => $this->translator->trans(
                             'Number of days to wait after account creation before sending the email.',
+                            [],
+                            AbandonedAccountReminder::DOMAIN_NAME
+                        ),
+                    ],
+                ]
+            )
+            ->add(
+                AbandonedAccountReminder::CONFIG_NAME_URL_TRACKING_ARGUMENTS,
+                TextType::class,
+                [
+                    "required" => false,
+                    "label" => $this->translator->trans('URL tracking arguments', [], AbandonedAccountReminder::DOMAIN_NAME),
+                    'label_attr'  => [
+                        'help' => $this->translator->trans(
+                            'Arguments to add to the URL of the "Discover our products" button. Please start with ?',
                             [],
                             AbandonedAccountReminder::DOMAIN_NAME
                         ),

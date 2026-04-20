@@ -87,11 +87,16 @@ class ListenerManager implements EventSubscriberInterface
             }
 
             try {
+                $customer = CustomerQuery::create()->findPk($abandonedAccount->getCustomerId());
                 $this->mailer->sendEmailMessage(
                     $messageCode,
                     [ConfigQuery::getStoreEmail() => ConfigQuery::getStoreName()],
                     [$abandonedAccount->getCustomerEmail() => $abandonedAccount->getCustomerEmail()],
-                    ['customer_id' => $abandonedAccount->getCustomerId()],
+                    [
+                        'customer_id' => $abandonedAccount->getCustomerId(),
+                        'customer_firstname' => $customer ? $customer->getFirstname() : '',
+                        'url_tracking_arguments' => AbandonedAccountReminder::getConfigValue(AbandonedAccountReminder::CONFIG_NAME_URL_TRACKING_ARGUMENTS)
+                    ],
                     $abandonedAccount->getLocale()
                 );
                 Tlog::getInstance()->notice("Sending account reminder to customer " . $abandonedAccount->getCustomerEmail());

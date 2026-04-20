@@ -27,6 +27,7 @@ class AbandonedAccountReminder extends BaseModule
 {
     public const DOMAIN_NAME = 'abandonedaccountreminder';
     public const CONFIG_NAME_REMINDER_TIME = 'account_reminder_in_days';
+    public const CONFIG_NAME_URL_TRACKING_ARGUMENTS = 'url_tracking_arguments';
     public const REMINDER_MESSAGE = 'abandoned-account-reminder-message';
 
     public function postActivation(ConnectionInterface $con = null): void

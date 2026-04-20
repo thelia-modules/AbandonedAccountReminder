@@ -52,7 +52,7 @@
                 {block name="content"}{/block}
 
                 <br>
-                <p><a class="btn-action" href="{url path="/"}">{intl l='Discover our products' d="abandonedaccountreminder"}</a></p>
+                <p><a class="btn-action" href="{url path="/"}{$url_tracking_arguments}">{intl l='Discover our products' d="abandonedaccountreminder"}</a></p>
                 <br>
             </td>
         </tr>
