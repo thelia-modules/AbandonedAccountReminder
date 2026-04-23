@@ -48,7 +48,10 @@ class ListenerManager implements EventSubscriberInterface
 
     protected function identifyNewAbandonedAccounts(): void
     {
+        $oneMonthAgo = (new \DateTime())->modify('-1 month');
+
         $customers = CustomerQuery::create()
+            ->filterByCreatedAt($oneMonthAgo, Criteria::GREATER_EQUAL)
             ->useOrderQuery(null, Criteria::LEFT_JOIN)
                 ->filterById(null, Criteria::ISNULL)
             ->endUse()
